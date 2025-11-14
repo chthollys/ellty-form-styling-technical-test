@@ -1,1 +1,0 @@
-import { ComponentProps } from "react";
