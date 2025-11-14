@@ -1,17 +1,20 @@
 :root {
   --background: #ffffff;
   --website-color-black: #1f2128;
-  --color-gray-main: #cdcdcd;
+  --color-gray-main: rgb(205, 205, 205, 0.6);
+  --color-gray-main-dark: #bdbdbd;
   --color-gray-main-60: rgba(205, 205, 205, 0.6);
   --color-gray-active: #eeeeee;
   --color-gray-border: #e1e1e1;
   --color-website-orange-main: #ffce22;
 
-  --color-checkbox-border-hover: rgb(204, 210, 224, 0.6);
+  --color-checkbox-border-hover: rgba(36, 105, 246, 0.1);
   --color-check-icon-gray: #878787;
   --color-check-icon-light-gray: #e3e3e3;
 
   --color-bg-checked: #2469f6;
+  --color-form-shadow-12: rgba(20, 20, 20, 0.12);
+  --color-form-shadow-10: rgba(20, 20, 20, 0.1);
 }
 
 * {
@@ -52,30 +55,32 @@ body {
   padding: 10px 15px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 6px;
-  border: 1px solid var(--color-gray-active);
+
+  box-shadow: 0 8px 15px 0px var(--color-form-shadow-12),
+    0 0 4px 0 var(--color-form-shadow-10);
 }
 
 .form-bordered {
-  border: 1px solid var(--color-gray-main);
-  border-radius: 8px;
+  border: transparent;
+  border-radius: 6px;
 }
 
 .form-divider {
   width: 100%;
   margin: 10px 0;
-  border-top: 0.7px solid var(--color-gray-main);
+  border: 0.7px solid var(--color-gray-main);
 }
 
 .checkbox {
   width: 23px;
   height: 23px;
-  border: 1px solid var(--color-gray-main-60);
+  opacity: 1;
+  border: 1px solid var(--color-gray-main);
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 200ms ease;
+  transition: all 200ms ease;
 }
 
 .form-checkbox-container {
@@ -101,6 +106,14 @@ body {
   cursor: pointer;
 }
 
+.form-checkbox-native:hover + .checkbox {
+  border-color: var(--color-gray-main-dark);
+}
+
+.form-checkbox-native:checked:hover + .checkbox {
+  background: #5087f8;
+}
+
 .form-checkbox-native:hover + .checkbox .check-icon {
   opacity: 1;
   transition: opacity 0.15s ease;
@@ -108,12 +121,18 @@ body {
 }
 
 .form-checkbox-native:active + .checkbox {
-  box-shadow: 0 0 0 2px var(--color-checkbox-border-hover);
+  box-shadow: 0 0 0 3px var(--color-checkbox-border-hover);
+}
+
+.form-checkbox-native:checked:active + .checkbox {
+  box-shadow: 0 0 0 3px var(--color-checkbox-border-hover);
+  background-color: var(--color-bg-checked);
+  border: none;
 }
 
 .form-checkbox-native:active + .checkbox .check-icon {
   opacity: 1;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.05s ease;
   fill: var(--color-check-icon-gray);
 }
 
@@ -131,8 +150,8 @@ body {
   opacity: 0;
   fill: var(--color-check-icon-gray);
   cursor: pointer;
-  width: 17px;
-  height: 12px;
+  width: 33px;
+  height: 33px;
 }
 
 .check-icon path {
