@@ -6,7 +6,8 @@
   --color-gray-main-60: rgba(205, 205, 205, 0.6);
   --color-gray-active: #eeeeee;
   --color-gray-border: #e1e1e1;
-  --color-website-orange-main: #ffce22;
+  --color-button-orange: #ffce22;
+  --color-button-orange-hover: #ffd84d;
 
   --color-checkbox-border-hover: rgba(36, 105, 246, 0.1);
   --color-check-icon-gray: #878787;
@@ -160,10 +161,17 @@ body {
 
 .done-button {
   font: inherit;
+  cursor: pointer;
   width: 100%;
   margin: 10px 0px;
   padding: 10px 20px;
   border-radius: 4px;
-  background-color: var(--color-website-orange-main);
+  background-color: var(--color-button-orange);
   border: none;
+
+  transition: all 200ms ease;
+}
+
+.done-button:hover {
+  background-color: var(--color-button-orange-hover);
 }

@@ -9,8 +9,9 @@ interface FormContainerProps extends ComponentProps<"form"> {
   children: ReactNode;
 }
 
-interface FormItemProps extends ComponentProps<"div"> {
+interface FormItemProps extends ComponentProps<"input"> {
   item: Item;
+  checked?: boolean;
 }
 
 function Form({ className, children, ...props }: FormContainerProps) {
@@ -25,7 +26,7 @@ function FormDividerLine() {
   return <div className="form-divider" aria-hidden="true"></div>;
 }
 
-function FormCheckboxItem({ item }: FormItemProps) {
+function FormCheckboxItem({ item, ...props }: FormItemProps) {
   return (
     <label className="form-checkbox-item">
       <span>{item.label}</span>
@@ -36,6 +37,7 @@ function FormCheckboxItem({ item }: FormItemProps) {
         type="checkbox"
         className="form-checkbox-native"
         aria-label={item.label}
+        {...props}
       />
       <Checkbox />
     </label>
